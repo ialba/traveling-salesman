@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+/e2e
 /out-tsc
 
 # dependencies

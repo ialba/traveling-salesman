@@ -1,0 +1,29 @@
+<div class="sidebar">
+  <h1>Home</h1>
+  <div *ngIf="hasHome else elseBlock">
+    <ul class="list-group">
+      <li (click)="flyTo(home)" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ home.properties.message }}
+      </li>
+    </ul>
+  </div>
+  <ng-template #elseBlock>
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="setHome()">Set Home</button>
+  </ng-template>
+
+  <h1>Markers</h1>
+  <p *ngIf="markers.length == 0">
+    Click on the map to set the points
+  </p>
+  <ul class="list-group">
+    <li (click)="flyTo(marker)" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let marker of markers">
+        {{ marker.properties.message }}
+    </li>
+  </ul>
+
+  <button type="button" [attr.disabled]="canCalculate ? null : ''"  class="btn btn-primary btn-lg btn-block" (click)="calculateRoute()">Calculate route</button>
+
+</div>
+
+
+<div class="map" id="map"></div>
